@@ -1,0 +1,32 @@
+aside {
+    width: 250px;
+    margin: 1em auto;
+    border: 1px solid #ccc;
+    padding: 1em;
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  /* Image inside aside */
+  aside img {
+    width: 200px;
+    height: auto;
+  }
+  
+  /* Adjust main image */
+  main img {
+    width: 150px;
+    height: auto;
+  }
+  
+  /* Remove padding from paragraphs */
+  p {
+    padding: 0;
+  }
+  
+  /* Footer styles */
+  footer {
+    margin-top: 2em;
+    border-top: 1px solid #ccc;
+    text-align: center;
+  }
