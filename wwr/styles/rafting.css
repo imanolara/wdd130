@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #8EB2F5;  
+    --secondary-color: #EFCA08; 
+    --accent1-color: #F8F9FA;
+    --accent2-color: #1E66EB;
+    --heading-font: 'Anton', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+  }
+  
+  /* Reset margin, padding and set box-sizing */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styling with background and font */
+  body {
+    font-family: var(--body-font);
+    color: var(--accent1-color);
+    background-color: #FAE161;
+  }
+  
+ /* Center and limit width of main layout containers */
+header, main, footer {
+    width: 840px;
+    margin: 0 auto;
+}
+
+/* Responsive width for smaller screens */
+@media (max-width: 900px) {
+    header, main, footer {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+/* Heading fonts and colors */
+h1, h2 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+}
+
+/* Margin and padding for common containers */
+nav, p, section, article {
+    margin: 16px;
+    padding: 8px;
+}
+
+/* Remove underline and add pointer cursor to social media links */
+.socialmedia a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hero container styling with relative position and minimum height */
+.hero {
+    position: relative;
+    min-height: 400px;
+}
+
+/* Hero image fills entire width */
+.hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Hero title positioned absolutely with overlay background */
+h1 {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    opacity: 0.8;
+    background-color: var(--accent2-color);
+    color: white;
+}
+
+/* Article inside hero positioned absolutely with overlay background */
+.hero article {
+    position: absolute;
+    bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    color: white;
+}
+
+/* Clearfix to prevent floating image from affecting text flow */
+.hero article::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Client image floated right with margin and fixed width */
+.hero article img {
+    float: right;
+    width: 125px;
+    margin-left: 10px;
+}
+
+/* Adventure images same size */
+img[src="images/adventure1.jpg"],
+img[src="images/adventure2.jpg"],
+img[src="images/adventure3.jpg"],
+img[src="images/adventure4.jpg"],
+img[src="images/adventure5.jpg"] {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin: 5px;
+    border-radius: 6px;
+}
+
+/* Social media logo images same size */
+.socialmedia img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin: 0 8px;
+    vertical-align: middle;
+}
