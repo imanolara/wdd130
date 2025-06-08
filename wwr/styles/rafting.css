@@ -1,7 +1,7 @@
 :root {
   --primary-color: #1b1b1b;
-  --secondary-color: #4caf50;
-  --accent1-color: #fae161;
+  --secondary-color: #835D62;
+  --accent1-color: #C4ABAF;
   --heading-font: 'Anton', sans-serif;
   --body-font: 'Roboto', sans-serif;
 }
@@ -213,5 +213,236 @@ footer nav.socialmedia {
     width: 60%;
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+/* --- ESTILOS ESPECÍFICOS DE LA PÁGINA DE CONTACTO --- */
+
+/* Contenedor general de las secciones */
+main section {
+  padding: 2em;
+  margin-bottom: 2em;
+  background-color: white; /* Puedes cambiar esto si prefieres */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main section h2 {
+  font-family: var(--heading-font);
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 1.5em;
+  font-size: 2.5rem;
+}
+
+/* Sección de Información de Contacto y Mapa */
+.contact-details-map-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Más espacio para el mapa */
+  gap: 2em;
+  align-items: start;
+  padding: 1.5em;
+  background-color: var(--accent1-color); /* Color de fondo similar a la cabecera */
+  border-radius: 8px;
+}
+
+.contact-details h3, .contact-map h3 {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: 1.8rem;
+}
+
+.contact-details p {
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 400px; /* Altura del mapa */
+  border: 2px solid var(--primary-color); /* Borde visible alrededor del mapa */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Sección de Perfiles de Empleados */
+#employee-profiles {
+  text-align: center;
+}
+
+.profiles-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
+  gap: 2em;
+}
+
+.employee {
+  flex: 0 0 calc(30% - 2em); /* Tres columnas con espacio entre ellas */
+  text-align: center;
+  background-color: var(--secondary-color); /* Un color que contraste */
+  color: white; /* Texto blanco para el fondo verde */
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.employee img {
+  width: 150px; /* Tamaño de la imagen del empleado */
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%; /* Imágenes redondas */
+  border: 4px solid var(--accent1-color); /* Borde alrededor de la imagen */
+  margin-bottom: 1em;
+}
+
+.employee figcaption h3 {
+  font-family: var(--heading-font);
+  margin: 0.5em 0 0.2em;
+  font-size: 1.5rem;
+}
+
+.employee figcaption p {
+  font-style: italic;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+/* Sección de Formulario de Contacto */
+#contact-form-section {
+  background-color: var(--accent1-color);
+  padding: 2.5em;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: calc(100% - 1.6em); /* Para ajustar el padding */
+  padding: 0.8em;
+  margin-bottom: 1.5em;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  resize: vertical; /* Permitir redimensionar solo verticalmente */
+  min-height: 100px;
+}
+
+.form-purpose {
+  border: 1px solid var(--primary-color);
+  padding: 1em;
+  margin-bottom: 1.5em;
+  border-radius: 5px;
+}
+
+.form-purpose legend {
+  font-weight: bold;
+  color: var(--primary-color);
+  padding: 0 0.5em;
+}
+
+.form-purpose label {
+  display: inline-block; /* Para que los labels estén al lado de los radios */
+  margin-right: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+}
+
+.contact-form input[type="radio"],
+.contact-form input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+.newsletter-checkbox {
+  margin-bottom: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-checkbox label {
+  margin-bottom: 0; /* Eliminar margen extra */
+}
+
+.contact-form button[type="submit"] {
+  display: block; /* Para que ocupe su propia línea */
+  width: 100%;
+  padding: 1em 2em;
+  background-color: var(--secondary-color); /* Tu color principal para botones */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: var(--heading-font);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: #388e3c; /* Un verde más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+
+/* Estilo para el enlace del wireframe en el footer */
+footer p a {
+  color: white; /* Color del texto del enlace en el footer */
+  text-decoration: underline;
+  margin-left: 1em; /* Un poco de espacio respecto al copyright */
+}
+
+footer p a:hover {
+  color: var(--secondary-color); /* Color al pasar el ratón */
+}
+
+/* RESPONSIVE PARA CONTACT.HTML */
+@media (max-width: 768px) {
+  .contact-details-map-container {
+      grid-template-columns: 1fr; /* Apilar en pantallas pequeñas */
+  }
+
+  .contact-map iframe {
+      height: 300px; /* Ajustar altura del mapa para móviles */
+  }
+
+  .profiles-grid {
+      flex-direction: column; /* Apilar perfiles de empleados */
+      align-items: center;
+  }
+
+  .employee {
+      flex: 0 0 80%; /* Hacerlos más grandes en móviles */
+      max-width: 300px;
+  }
+
+  .contact-form {
+      padding: 1.5em; /* Menos padding en móviles */
+  }
+
+  .form-purpose label {
+      display: block; /* Cada opción de radio en su propia línea */
+      margin-right: 0;
   }
 }
