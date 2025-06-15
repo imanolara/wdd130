@@ -1,17 +1,46 @@
+/* General Body and Layout Styles */
 :root {
-  --primary-color: #1b1b1b;
-  --secondary-color: #835D62;
-  --accent1-color: #C4ABAF;
+  /* User's Original Base Colors */
+  --primary-color: #1b1b1b; /* Negro casi */
+  --secondary-color: #835D62; /* Marrón/Malva oscuro */
+  --accent1-color: #C4ABAF; /* Rosado/Gris claro */
+  --accent2-color: #4a4a4a; /* Gris oscuro para fondos/hover */
+
+  /* Font Families */
   --heading-font: 'Anton', sans-serif;
-  --body-font: 'Roboto', sans-serif;
+  --paragraph-font: 'Roboto', sans-serif; /* Standardizing on paragraph-font */
+  --body-font: 'Roboto', sans-serif; /* Mantener por compatibilidad con código existente */
+
+  /* Semantic Colors - Derived from the base palette for consistency */
+  --headline-color: var(--primary-color); /* Títulos suelen ser el color más oscuro */
+  --paragraph-color: var(--primary-color); /* Párrafos también */
+
+  --nav-background-color: var(--accent1-color); /* Fondo de navegación */
+  --nav-link-color: var(--primary-color); /* Enlaces de navegación */
+  --nav-hover-link-color: var(--secondary-color); /* Enlace de navegación al pasar el ratón */
+  --nav-hover-background-color: rgba(0, 0, 0, 0.1); /* Fondo de enlace al pasar el ratón (transparente ligero) */
+
+  --background-color: #ffffff; /* Fondo general de la página (blanco) */
+  --background-color-dark: var(--primary-color); /* Fondo oscuro para secciones específicas (negro) */
+  --border-color: var(--primary-color); /* Color para bordes (negro) */
+
+  /* Button Colors */
+  --button-background: var(--secondary-color);
+  --button-text: white;
+  --button-hover-background: var(--accent2-color);
+
+  /* Padding general para el contenido principal */
+  --padding-inline: 5%; /* 5% de padding a la izquierda y derecha */
+  --padding-inline-mobile: 20px; /* Padding para móviles */
 }
 
-/* GENERAL */
 body {
   margin: 0;
-  font-family: var(--body-font);
-  background-color: white;
-  color: var(--primary-color);
+  font-family: var(--paragraph-font); /* Usar paragraph-font para consistencia */
+  background-color: var(--background-color);
+  color: var(--paragraph-color);
+  max-width: 1600px; /* Para centrar contenido en pantallas grandes */
+  line-height: 1.5;
 }
 
 /* HEADER */
@@ -20,9 +49,12 @@ header {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 20px;
-  padding: 16px;
-  background-color: var(--accent1-color);
-  border-bottom: 2px solid var(--primary-color);
+  padding: 20px var(--padding-inline); /* Consistente con padding-inline */
+  background-color: var(--nav-background-color);
+  color: var(--nav-link-color); /* Color del texto del header */
+  border-bottom: 2px solid var(--primary-color); /* Borde de la versión original */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra de la versión de trips */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
 }
 
 header img {
@@ -32,63 +64,389 @@ header img {
 
 header h1 {
   font-family: var(--heading-font);
-  font-size: 2rem;
+  font-size: 2em; /* Usar em para escalabilidad */
   margin: 0;
+  color: var(--headline-color);
+  white-space: nowrap; /* Evita que el título se rompa */
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px; /* Espacio entre enlaces (de trips) */
   margin: 0;
   padding: 0;
+  flex-wrap: wrap; /* Permite que los enlaces se envuelvan */
+  justify-content: flex-end; /* Alinea los enlaces a la derecha */
 }
 
 nav ul li a {
+  display: block; /* Para que el padding y hover funcionen bien */
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--nav-link-color);
   font-weight: bold;
-  transition: color 0.3s ease;
+  padding: 8px 15px; /* Padding para enlaces (de trips) */
+  border-radius: 5px; /* Bordes redondeados para enlaces */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: var(--secondary-color);
+  background-color: var(--nav-hover-background-color);
+  color: var(--nav-hover-link-color);
 }
 
-/* HERO */
-#hero {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-#hero img {
+/* Main Content Area */
+main {
   width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
 }
 
-#hero article {
-  margin-top: 16px;
+/* FOOTER */
+footer {
+  display: flex;
+  flex-direction: column; /* Apila elementos verticalmente */
+  align-items: center;
+  gap: 15px;
+  padding: 20px var(--padding-inline); /* Consistente con padding-inline */
+  background-color: var(--primary-color);
+  color: white; /* Texto blanco en footer oscuro */
+  text-align: center;
+  margin-top: 40px; /* Espacio con el contenido de arriba */
 }
 
-#hero article h2 {
-  font-family: var(--heading-font);
+footer p {
+  margin: 0;
+  font-size: 0.9em;
 }
 
-#hero article img {
-  width: 200px;
+footer a {
+  color: white; /* Color del texto del enlace en el footer */
+  text-decoration: none; /* Quitar subrayado por defecto */
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--secondary-color); /* Color al pasar el ratón */
+}
+
+footer nav.socialmedia { /* Mantener la especificidad para redes sociales */
+  display: flex;
+  gap: 15px; /* Espacio entre iconos */
+}
+
+.socialmedia img {
+  width: 30px; /* Tamaño de los iconos de redes sociales */
+  height: 30px;
+  filter: brightness(0) invert(1); /* Hace que los iconos sean blancos */
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+.socialmedia a:hover img {
+  filter: brightness(0.7) invert(1); /* Ligeramente más brillante al pasar el ratón */
+  transform: scale(1.1); /* Efecto de escala */
+}
+
+
+/* --- Home Page Specific Styles (index.html) --- */
+
+/* Hero Section */
+#home-hero {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Ajusta la altura según sea necesario */
+  overflow: hidden; /* Asegura que la imagen no se desborde */
+}
+
+#home-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el contenedor manteniendo el aspecto */
+  object-position: center; /* Centra la imagen */
+  filter: brightness(60%); /* Oscurece un poco la imagen para que el texto resalte */
+}
+
+.hero-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el div */
+  color: white;
+  text-align: center;
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para el texto */
   border-radius: 8px;
-  margin: 10px 0;
 }
 
-/* HISTORY SECTION */
+.hero-message h2 {
+  font-family: var(--heading-font);
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: var(--accent1-color); /* Usamos un color de acento claro para contraste */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-message p {
+  font-family: var(--paragraph-font);
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Call to Action Button in Hero */
+.hero-cta {
+  display: inline-block;
+  background-color: var(--secondary-color); /* Color de acento para el botón */
+  color: var(--button-text); /* Texto blanco para el botón */
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.hero-cta:hover {
+  background-color: var(--button-hover-background); /* Cambia de color al pasar el mouse */
+}
+
+
+/* Homepage Grid Section */
+#homepage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales por defecto */
+  gap: 30px;
+  padding: 50px var(--padding-inline); /* Usa la variable para el padding horizontal */
+  background-color: var(--background-color);
+}
+
+.grid-item {
+  background-color: var(--accent1-color); /* Fondo de los ítems de la cuadrícula */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  text-align: center;
+}
+
+.grid-item h2, .grid-item h3 {
+  font-family: var(--heading-font);
+  color: var(--headline-color);
+  margin-bottom: 15px;
+}
+
+.grid-item p {
+  font-family: var(--paragraph-font);
+  color: var(--paragraph-color);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.grid-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 250px; /* Ajusta la altura máxima para las imágenes de la cuadrícula */
+}
+
+/* Estilos específicos para los nuevos <figure> con imágenes y textos */
+.grid-item.image-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido al inicio del card */
+    align-items: center; /* Centra el contenido horizontalmente */
+    padding-bottom: 15px;
+}
+
+.image-card img {
+    margin-bottom: 10px; /* Espacio entre la imagen y la leyenda */
+}
+
+.image-card figcaption {
+    font-family: var(--heading-font);
+    font-size: 1.3em;
+    color: var(--headline-color);
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Specific Grid Item Styles */
+.welcome-message {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.newsletter-promo {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+/* Ajustes para el orden de las image-card en la cuadrícula */
+#homepage-grid .image-card:nth-of-type(1) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+#homepage-grid .image-card:nth-of-type(2) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* Call to Action Button in Welcome Message */
+.learn-more-button {
+  display: inline-block;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-button:hover {
+  background-color: var(--button-hover-background);
+}
+
+/* Newsletter Form (reutilizado de contact, asegura que aplique) */
+.newsletter-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--paragraph-font);
+  color: var(--headline-color);
+}
+
+.newsletter-form input[type="text"],
+.newsletter-form input[type="email"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-family: var(--paragraph-font);
+  color: var(--paragraph-color); /* Asegura que el texto sea visible */
+  background-color: white;
+}
+
+.newsletter-form button {
+  background-color: var(--button-background);
+  color: var(--button-text);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: var(--button-hover-background);
+}
+
+
+/* Trip Spotlight Section (Opcional - para index.html) */
+#trip-spotlight {
+  padding: 50px var(--padding-inline);
+  text-align: center;
+  background-color: var(--background-color-dark); /* Un fondo diferente para esta sección */
+  color: white;
+}
+
+#trip-spotlight h2 {
+  font-family: var(--heading-font);
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: white; /* Blanco sobre fondo oscuro */
+}
+
+.trips-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en pantallas pequeñas */
+}
+
+.trip-card {
+  background-color: var(--accent1-color); /* Fondo de las tarjetas de trip spotlight */
+  color: var(--paragraph-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px; /* Ancho fijo para las tarjetas */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido */
+}
+
+.trip-card img {
+  max-width: 100%;
+  height: 200px; /* Altura fija para las imágenes de las tarjetas */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.trip-card h3 {
+  font-family: var(--heading-font);
+  color: var(--headline-color);
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.trip-card p {
+  font-family: var(--paragraph-font);
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.trip-button {
+  display: inline-block;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: auto; /* Empuja el botón hacia abajo si el contenido varía */
+  transition: background-color 0.3s ease;
+}
+
+.trip-button:hover {
+  background-color: var(--button-hover-background);
+}
+
+.cta-button-bottom {
+  display: inline-block;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button-bottom:hover {
+  background-color: var(--button-hover-background);
+}
+
+/* --- History Section (index.html, original) --- */
 #history {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 40px 20px;
+  padding: 40px var(--padding-inline); /* Consistente con padding-inline */
   background-color: var(--accent1-color);
+  color: var(--paragraph-color);
   gap: 30px;
 }
 
@@ -128,19 +486,22 @@ nav ul li a:hover {
   left: 0;
   right: 0;
   font-family: var(--heading-font);
-  color: var(--primary-color);
+  color: var(--headline-color);
   text-align: center;
 }
 
-/* ADVENTURES */
+/* --- Adventures Section (index.html, original) --- */
 #adventures {
-  padding: 20px;
+  padding: 20px var(--padding-inline); /* Consistente con padding-inline */
   text-align: center;
+  background-color: var(--background-color);
+  color: var(--paragraph-color);
 }
 
 #adventures h2 {
   font-family: var(--heading-font);
   margin-bottom: 20px;
+  color: var(--headline-color);
 }
 
 .adventure-gallery {
@@ -151,8 +512,10 @@ nav ul li a:hover {
 }
 
 .adventure-gallery figure {
-  flex: 1 1 18%;
+  flex: 1 1 18%; /* Ajuste para 5 columnas */
+  min-width: 150px; /* Mínimo para evitar que se aplasten */
   background-color: var(--accent1-color);
+  color: var(--paragraph-color);
   padding: 10px;
   border-radius: 8px;
   text-align: center;
@@ -170,58 +533,17 @@ nav ul li a:hover {
   margin-top: 8px;
   font-weight: bold;
   font-family: var(--heading-font);
+  color: var(--headline-color);
 }
 
-/* FOOTER */
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
-  background-color: var(--primary-color);
-  color: white;
-}
-
-footer nav.socialmedia {
-  display: flex;
-  gap: 12px;
-}
-
-.socialmedia img {
-  width: 32px;
-  height: 32px;
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease;
-}
-
-.socialmedia a:hover img {
-  filter: brightness(0.7) invert(1);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  #history {
-    flex-direction: column;
-  }
-  
-  .history-text, .history-images {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .history-secondary {
-    width: 60%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-/* --- ESTILOS ESPECÍFICOS DE LA PÁGINA DE CONTACTO --- */
+/* --- Contact Page Specific Styles (contact.html) --- */
 
 /* Contenedor general de las secciones */
 main section {
-  padding: 2em;
+  padding: 2em var(--padding-inline); /* Usar padding-inline */
   margin-bottom: 2em;
-  background-color: white; /* Puedes cambiar esto si prefieres */
+  background-color: var(--background-color);
+  color: var(--paragraph-color);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -229,7 +551,7 @@ main section {
 main section h2 {
   font-family: var(--heading-font);
   text-align: center;
-  color: var(--primary-color);
+  color: var(--headline-color);
   margin-bottom: 1.5em;
   font-size: 2.5rem;
 }
@@ -241,13 +563,14 @@ main section h2 {
   gap: 2em;
   align-items: start;
   padding: 1.5em;
-  background-color: var(--accent1-color); /* Color de fondo similar a la cabecera */
+  background-color: var(--accent1-color);
+  color: var(--paragraph-color);
   border-radius: 8px;
 }
 
 .contact-details h3, .contact-map h3 {
   font-family: var(--heading-font);
-  color: var(--primary-color);
+  color: var(--headline-color);
   margin-top: 0;
   margin-bottom: 1em;
   font-size: 1.8rem;
@@ -261,7 +584,7 @@ main section h2 {
 .contact-map iframe {
   width: 100%;
   height: 400px; /* Altura del mapa */
-  border: 2px solid var(--primary-color); /* Borde visible alrededor del mapa */
+  border: 2px solid var(--border-color); /* Borde visible alrededor del mapa */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -269,6 +592,8 @@ main section h2 {
 /* Sección de Perfiles de Empleados */
 #employee-profiles {
   text-align: center;
+  background-color: var(--background-color);
+  color: var(--paragraph-color);
 }
 
 .profiles-grid {
@@ -281,8 +606,8 @@ main section h2 {
 .employee {
   flex: 0 0 calc(30% - 2em); /* Tres columnas con espacio entre ellas */
   text-align: center;
-  background-color: var(--secondary-color); /* Un color que contraste */
-  color: white; /* Texto blanco para el fondo verde */
+  background-color: var(--secondary-color);
+  color: white; /* Texto blanco para el fondo oscuro */
   padding: 1.5em;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -292,11 +617,11 @@ main section h2 {
 }
 
 .employee img {
-  width: 150px; /* Tamaño de la imagen del empleado */
+  width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 50%; /* Imágenes redondas */
-  border: 4px solid var(--accent1-color); /* Borde alrededor de la imagen */
+  border-radius: 50%;
+  border: 4px solid var(--accent1-color);
   margin-bottom: 1em;
 }
 
@@ -304,24 +629,28 @@ main section h2 {
   font-family: var(--heading-font);
   margin: 0.5em 0 0.2em;
   font-size: 1.5rem;
+  color: white; /* Asegura el color del título del empleado */
 }
 
 .employee figcaption p {
   font-style: italic;
   font-size: 0.9em;
   margin: 0;
+  color: white; /* Asegura el color del texto del rol del empleado */
 }
 
 /* Sección de Formulario de Contacto */
 #contact-form-section {
   background-color: var(--accent1-color);
-  padding: 2.5em;
+  color: var(--paragraph-color);
+  padding: 2.5em var(--padding-inline); /* Usar padding-inline */
 }
 
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
-  background-color: white;
+  background-color: var(--background-color);
+  color: var(--paragraph-color);
   padding: 2em;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -331,7 +660,7 @@ main section h2 {
   display: block;
   margin-bottom: 0.5em;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--headline-color);
 }
 
 .contact-form input[type="text"],
@@ -340,32 +669,36 @@ main section h2 {
   width: calc(100% - 1.6em); /* Para ajustar el padding */
   padding: 0.8em;
   margin-bottom: 1.5em;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--border-color);
   border-radius: 5px;
-  font-family: var(--body-font);
+  font-family: var(--paragraph-font);
   font-size: 1rem;
+  color: var(--paragraph-color);
+  background-color: white;
 }
 
 .contact-form textarea {
-  resize: vertical; /* Permitir redimensionar solo verticalmente */
+  resize: vertical;
   min-height: 100px;
 }
 
 .form-purpose {
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--border-color);
   padding: 1em;
   margin-bottom: 1.5em;
   border-radius: 5px;
+  color: var(--paragraph-color);
+  background-color: var(--background-color);
 }
 
 .form-purpose legend {
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--headline-color);
   padding: 0 0.5em;
 }
 
 .form-purpose label {
-  display: inline-block; /* Para que los labels estén al lado de los radios */
+  display: inline-block;
   margin-right: 1.5em;
   margin-bottom: 0.5em;
   font-weight: normal;
@@ -383,15 +716,15 @@ main section h2 {
 }
 
 .newsletter-checkbox label {
-  margin-bottom: 0; /* Eliminar margen extra */
+  margin-bottom: 0;
 }
 
 .contact-form button[type="submit"] {
-  display: block; /* Para que ocupe su propia línea */
+  display: block;
   width: 100%;
   padding: 1em 2em;
-  background-color: var(--secondary-color); /* Tu color principal para botones */
-  color: white;
+  background-color: var(--button-background);
+  color: var(--button-text);
   border: none;
   border-radius: 5px;
   font-size: 1.2rem;
@@ -401,24 +734,329 @@ main section h2 {
 }
 
 .contact-form button[type="submit"]:hover {
-  background-color: #388e3c; /* Un verde más oscuro al pasar el ratón */
-  transform: translateY(-2px); /* Pequeño efecto de elevación */
+  background-color: var(--button-hover-background);
+  transform: translateY(-2px);
 }
 
+/* --- Trips Page Specific Styles (trips.html) --- */
 
-/* Estilo para el enlace del wireframe en el footer */
-footer p a {
-  color: white; /* Color del texto del enlace en el footer */
-  text-decoration: underline;
-  margin-left: 1em; /* Un poco de espacio respecto al copyright */
+/* Reutilizando la clase hero-section del index para consistencia */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-footer p a:hover {
-  color: var(--secondary-color); /* Color al pasar el ratón */
+.hero-section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(60%); /* Oscurece la imagen para el texto */
+    z-index: 1; /* Asegura que la imagen esté detrás del contenido */
 }
 
-/* RESPONSIVE PARA CONTACT.HTML */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté sobre la imagen */
+    color: white;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    max-width: 900px;
+}
+
+.hero-content h2 {
+    font-family: var(--heading-font);
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: var(--accent1-color); /* Usamos el color de acento para el título aquí */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content p {
+    font-family: var(--paragraph-font);
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.hero-cta-trips {
+    display: inline-block;
+    background-color: var(--button-background); /* Botón de llamada a la acción principal */
+    color: var(--button-text);
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta-trips:hover {
+    background-color: var(--button-hover-background);
+    transform: translateY(-3px);
+}
+
+/* Trip Descriptions Section */
+#trip-descriptions {
+    padding: 60px var(--padding-inline);
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+#trip-descriptions h2 {
+    font-family: var(--heading-font);
+    font-size: 3em;
+    margin-bottom: 50px;
+    color: var(--headline-color);
+}
+
+.trip-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan */
+    gap: 40px; /* Espacio entre las tarjetas */
+}
+
+.trip-detail-card {
+    background-color: var(--accent1-color); /* Fondo de las tarjetas de detalle de viaje */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    width: 350px; /* Ancho fijo para las tarjetas */
+    padding: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trip-detail-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.trip-detail-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.trip-detail-card h3 {
+    font-family: var(--heading-font);
+    font-size: 2em;
+    color: var(--headline-color);
+    margin-bottom: 15px;
+}
+
+.trip-detail-card p {
+    font-family: var(--paragraph-font);
+    font-size: 1.1em;
+    color: var(--paragraph-color);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.trip-detail-card p:last-of-type {
+    margin-bottom: 25px; /* Más espacio antes del botón */
+}
+
+.trip-card-button {
+    display: inline-block;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: auto; /* Empuja el botón hacia abajo */
+    transition: background-color 0.3s ease;
+}
+
+.trip-card-button:hover {
+    background-color: var(--button-hover-background);
+}
+
+/* Available Trips Table Section */
+#trips-table {
+    padding: 60px var(--padding-inline);
+    background-color: var(--background-color-dark); /* Fondo oscuro para la tabla */
+    color: white;
+    text-align: center;
+}
+
+#trips-table h2 {
+    font-family: var(--heading-font);
+    font-size: 3em;
+    margin-bottom: 40px;
+    color: white; /* Títulos en blanco sobre fondo oscuro */
+}
+
+#trips-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; /* Centra la tabla */
+    max-width: 1200px;
+    background-color: var(--accent1-color); /* Fondo de la tabla */
+    border-radius: 8px;
+    overflow: hidden; /* Para que los border-radius funcionen con el colapso */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#trips-table th,
+#trips-table td {
+    border: 1px solid var(--border-color); /* Color de bordes de la tabla */
+    padding: 15px;
+    text-align: left;
+    font-family: var(--paragraph-font);
+    font-size: 1.05em;
+    color: var(--paragraph-color);
+}
+
+#trips-table th {
+    background-color: var(--secondary-color); /* Un color de acento para los encabezados */
+    color: white;
+    font-family: var(--heading-font);
+    font-weight: normal; /* Anton ya es bold */
+    text-transform: uppercase;
+    font-size: 1.1em;
+    padding: 20px 15px;
+}
+
+#trips-table tbody tr:nth-child(even) {
+    background-color: var(--background-color); /* Filas pares con un fondo diferente */
+}
+
+#trips-table td a.table-book-button {
+    display: inline-block;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+#trips-table td a.table-book-button:hover {
+    background-color: var(--button-hover-background);
+}
+
+/* Final Call to Action Section */
+#final-cta {
+    padding: 60px var(--padding-inline);
+    text-align: center;
+    background-color: var(--background-color); /* Un fondo que contraste con la tabla */
+}
+
+#final-cta h2 {
+    font-family: var(--heading-font);
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--headline-color);
+}
+
+#final-cta p {
+    font-family: var(--paragraph-font);
+    font-size: 1.2em;
+    color: var(--paragraph-color);
+    margin-bottom: 40px;
+}
+
+.final-cta-button {
+    display: inline-block;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.final-cta-button:hover {
+    background-color: var(--button-hover-background);
+    transform: translateY(-3px);
+}
+
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
+  header {
+    grid-template-columns: auto 1fr; /* Logo y nav en una fila, h1 debajo o ajustado */
+    justify-content: center;
+    text-align: center;
+  }
+
+  header h1 {
+    grid-column: 1 / -1; /* Ocupa todo el ancho si es necesario */
+  }
+
+  header nav {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+    justify-content: center; /* Centra la navegación */
+  }
+
+  .hero-message h2 {
+      font-size: 2.2em;
+  }
+  .hero-message p {
+      font-size: 1em;
+  }
+
+  #homepage-grid {
+      grid-template-columns: 1fr; /* Una columna en pantallas más pequeñas */
+  }
+
+  /* Restablece el orden de la cuadrícula para una sola columna */
+  .welcome-message,
+  .newsletter-promo,
+  .image-card {
+      grid-column: auto;
+      grid-row: auto;
+  }
+
+  #history {
+    flex-direction: column;
+    padding: 40px var(--padding-inline-mobile);
+  }
+
+  .history-text, .history-images {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .history-secondary {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .trips-container {
+      flex-direction: column; /* Apila las tarjetas verticalmente */
+      align-items: center; /* Centra las tarjetas */
+  }
+
+  .trip-card {
+      width: 90%; /* Ajusta el ancho de las tarjetas en móviles */
+  }
+
+  /* Contact Page */
   .contact-details-map-container {
       grid-template-columns: 1fr; /* Apilar en pantallas pequeñas */
   }
@@ -445,4 +1083,167 @@ footer p a:hover {
       display: block; /* Cada opción de radio en su propia línea */
       margin-right: 0;
   }
+}
+
+@media (max-width: 480px) {
+  #home-hero {
+      height: 400px; /* Menor altura para héroe en móviles muy pequeños */
+  }
+
+  .hero-message h2 {
+      font-size: 1.8em;
+  }
+
+  .hero-message p {
+      font-size: 0.9em;
+  }
+
+  .hero-cta {
+      padding: 10px 20px;
+      font-size: 1em;
+  }
+
+  #homepage-grid, #trip-spotlight, #adventures {
+      padding: 30px var(--padding-inline-mobile); /* Ajusta padding para móviles */
+  }
+
+  .grid-item {
+      padding: 20px;
+  }
+
+  .newsletter-form input[type="text"],
+  .newsletter-form input[type="email"] {
+      width: calc(100% - 10px); /* Ajusta para padding más pequeño */
+  }
+
+  /* Trips Page (continuación) */
+  .hero-section {
+        height: 400px;
+    }
+    .hero-content h2 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    .hero-cta-trips {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    #trip-descriptions,
+    #trips-table,
+    #final-cta {
+        padding: 40px var(--padding-inline-mobile);
+    }
+    .trip-detail-card {
+        width: 95%; /* Más ancho en pantallas muy pequeñas */
+        padding: 20px;
+    }
+    .trip-detail-card h3 {
+        font-size: 1.7em;
+    }
+    .trip-detail-card p {
+        font-size: 1em;
+    }
+    .trip-card-button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    #trips-table td::before {
+        font-size: 0.9em; /* Ajusta tamaño de las etiquetas de tabla en móvil */
+    }
+    #final-cta h2 {
+        font-size: 2.2em;
+    }
+    #final-cta p {
+        font-size: 1em;
+    }
+    .final-cta-button {
+        font-size: 1.1em;
+        padding: 15px 30px;
+    }
+
+    /* Table Responsiveness for mobile */
+    #trips-table table {
+        display: block; /* Permite desplazamiento horizontal en pantallas pequeñas */
+        overflow-x: auto; /* Agrega scroll horizontal si la tabla es demasiado ancha */
+        white-space: nowrap; /* Evita que el contenido de la tabla se rompa */
+        -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
+    }
+
+    #trips-table thead,
+    #trips-table tbody,
+    #trips-table th,
+    #trips-table td,
+    #trips-table tr {
+        display: block; /* Hace que las filas y celdas se comporten como bloques */
+    }
+
+    #trips-table thead tr {
+        position: absolute;
+        top: -9999px; /* Oculta el encabezado original de la tabla en móvil */
+        left: -9999px;
+    }
+
+    #trips-table tr {
+        border: 1px solid var(--border-color);
+        margin-bottom: 15px;
+        background-color: var(--accent1-color); /* Fondo de cada 'fila-tarjeta' */
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #trips-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%; /* Espacio para la etiqueta */
+        text-align: right;
+        white-space: normal;
+    }
+
+    #trips-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: var(--headline-color);
+    }
+
+    /* Contact Page - Responsive Adjustments for mobile */
+    main section {
+        padding: 1.5em var(--padding-inline-mobile);
+    }
+    main section h2 {
+        font-size: 2rem;
+    }
+    .contact-details-map-container {
+        padding: 1em var(--padding-inline-mobile);
+    }
+    .contact-details h3, .contact-map h3 {
+        font-size: 1.5rem;
+    }
+    .employee {
+        padding: 1em;
+    }
+    .employee img {
+        width: 120px;
+        height: 120px;
+    }
+    .employee figcaption h3 {
+        font-size: 1.3rem;
+    }
+    #contact-form-section {
+        padding: 2em var(--padding-inline-mobile);
+    }
+    .contact-form {
+        padding: 1.5em;
+    }
+    .contact-form button[type="submit"] {
+        font-size: 1rem;
+        padding: 0.8em 1.5em;
+    }
 }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Discover the exciting whitewater rafting trips and packages offered by Black Dragon Rafting. Find your perfect adventure!">
+  <meta name="author" content="Imanol Aranda Yauri">
+  <title>Trips | Black Dragon Rafting</title>
+  <link rel="stylesheet" href="styles/rafting.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Black Dragon Logo">
+    <h1>Black Dragon Rafting</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="trips.html">Trips</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="trips-hero" class="hero-section">
+        <img src="images/hero-trips.jpg" alt="Rafting team conquering rapids">
+        <div class="hero-content">
+            <h2>Your Next Adventure Awaits!</h2>
+            <p>Explore our exhilarating whitewater rafting trips and find the perfect journey for you and your crew.</p>
+            <a href="contact.html" class="cta-button hero-cta-trips">Contact Us for Booking!</a>
+        </div>
+    </section>
+
+    <section id="trip-descriptions">
+        <h2>Our Popular Adventures</h2>
+        <div class="trip-cards-container">
+            <div class="trip-detail-card">
+                <img src="images/rafting1_600.jpg" alt="Thrilling Raft Trip">
+                <h3>The Wild River Expedition</h3>
+                <p><strong>Duration:</strong> 3 Days / 2 Nights</p>
+                <p><strong>Difficulty:</strong> Advanced (Class IV-V)</p>
+                <p><strong>Price:</strong> $750 per person</p>
+                <p>For the true adrenaline junkies! This multi-day trip takes you through the most challenging rapids, stunning canyons, and offers unforgettable wilderness camping.</p>
+                <a href="contact.html?trip=wild-river" class="trip-card-button">Book This Trip</a>
+            </div>
+
+            <div class="trip-detail-card">
+                <img src="images/rafting2_600.jpg" alt="Family Rafting Trip">
+                <h3>Family Fun Rapids</h3>
+                <p><strong>Duration:</strong> Full Day</p>
+                <p><strong>Difficulty:</strong> Beginner-Intermediate (Class II-III)</p>
+                <p><strong>Price:</strong> $150 per person</p>
+                <p>Perfect for families and first-timers! Enjoy a thrilling yet safe adventure on gentler rapids, with plenty of opportunities for swimming and scenic views. Lunch included!</p>
+                <a href="contact.html?trip=family-fun" class="trip-card-button">Book This Trip</a>
+            </div>
+
+            <div class="trip-detail-card">
+                <img src="images/rafting3_600.jpg" alt="Sunset Rafting Trip">
+                <h3>Sunset Serenity Paddle</h3>
+                <p><strong>Duration:</strong> Half Day (Evening)</p>
+                <p><strong>Difficulty:</strong> Easy (Class I-II)</p>
+                <p><strong>Price:</strong> $90 per person</p>
+                <p>Experience the tranquil beauty of the river as the sun sets. This peaceful trip is ideal for relaxation, photography, and connecting with nature. Includes light refreshments.</p>
+                <a href="contact.html?trip=sunset-paddle" class="trip-card-button">Book This Trip</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="trips-table">
+        <h2>All Available Trips</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Trip Name</th>
+                    <th>Location</th>
+                    <th>Duration</th>
+                    <th>Difficulty</th>
+                    <th>Price</th>
+                    <th>Departure Dates</th>
+                    <th>Book</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Trip Name">The Wild River Expedition</td>
+                    <td data-label="Location">Green River, UT</td>
+                    <td data-label="Duration">3 Days / 2 Nights</td>
+                    <td data-label="Difficulty">Advanced (IV-V)</td>
+                    <td data-label="Price">$750</td>
+                    <td data-label="Departure Dates">June 15, July 10, Aug 5</td>
+                    <td><a href="contact.html?trip=wild-river-expedition" class="table-book-button">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Trip Name">Family Fun Rapids</td>
+                    <td data-label="Location">Snake River, ID</td>
+                    <td data-label="Duration">Full Day</td>
+                    <td data-label="Difficulty">Beginner-Intermediate (II-III)</td>
+                    <td data-label="Price">$150</td>
+                    <td data-label="Departure Dates">Every Saturday/Sunday</td>
+                    <td><a href="contact.html?trip=family-fun-rapids" class="table-book-button">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Trip Name">Sunset Serenity Paddle</td>
+                    <td data-label="Location">Colorado River, CO</td>
+                    <td data-label="Duration">Half Day</td>
+                    <td data-label="Difficulty">Easy (I-II)</td>
+                    <td data-label="Price">$90</td>
+                    <td data-label="Departure Dates">Fri, Sat, Sun evenings</td>
+                    <td><a href="contact.html?trip=sunset-serenity-paddle" class="table-book-button">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Trip Name">Canyon Explorer</td>
+                    <td data-label="Location">Salmon River, ID</td>
+                    <td data-label="Duration">2 Days / 1 Night</td>
+                    <td data-label="Difficulty">Intermediate (III-IV)</td>
+                    <td data-label="Price">$480</td>
+                    <td data-label="Departure Dates">July 20, Aug 15</td>
+                    <td><a href="contact.html?trip=canyon-explorer" class="table-book-button">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Trip Name">Adventure Rapids Quest</td>
+                    <td data-label="Location">Rogue River, OR</td>
+                    <td data-label="Duration">Full Day</td>
+                    <td data-label="Difficulty">Intermediate (III)</td>
+                    <td data-label="Price">$180</td>
+                    <td data-label="Departure Dates">Daily during season</td>
+                    <td><a href="contact.html?trip=adventure-rapids-quest" class="table-book-button">Book Now</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="final-cta">
+        <h2>Ready to Plan Your Rafting Adventure?</h2>
+        <p>Our team is here to help you choose the perfect trip!</p>
+        <a href="contact.html" class="cta-button final-cta-button">Contact Us Today!</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Black Dragon | Imanol Aranda Yauri</p>
+    <nav class="socialmedia">
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+      <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+    </nav>
+    <p><a href="https://app.moqups.com/qSJMCPpLNG54aIfBSBU14bIWAXannTHk/view/page/a4e8fa784" target="_blank">View Trips Wireframe</a></p>
+  </footer>
+</body>
+</html>
